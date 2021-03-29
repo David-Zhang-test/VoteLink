@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>a{text-decoration:none}</style>
+  
+  <title></title>
+</head>
+
+<body>
+  <div id="app">
+    {{ Flag }}
+
+  </div>
+
+
+  <!-- 引入vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        timeRemain: 0,
+        EndTime: "2021/4/1 20:00:00",
+        NowTime: "",
+        // prs: 0,
+        timer: null,
+        Flag: "投票通道将于本日 20:00(GMT+8) 后开放，敬请期待",
+
+      },
+      methods: {
+      
+        onload() {
+          
+          let self = this;
+          self.timer = setInterval(function() {
+          let endtime_p = new Date(self.EndTime).getTime();
+          self.NowTime = new Date().getTime();
+          let sttime_p = new Date(self.BeginTime).getTime();
+          
+          if( self.NowTime - endtime_p > 0 ){
+            
+            
+            self.Flag = "愚人节快乐！Powered by SubIT(doge)"
+
+          }
+          
+          
+          })
+     
+
+    }
+  },
+})
+    window.onload = app.onload;
+    
+  </script>
+
+
+
+
+</body>
+
+</html>
