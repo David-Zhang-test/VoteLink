@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <!-- 引入样式 -->
   <style>a{text-decoration:none}</style>
   
@@ -13,22 +14,22 @@
 
 <body>
   <div id="app">
-    {{ Flag }}
+    <el-button :plain="true" @click="open">点我投票</el-button>
 
   </div>
 
 
   <!-- 引入vue.js -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
   <script>
     const app = new Vue({
       el: "#app",
       data: {
         timeRemain: 0,
-        EndTime: "2021/4/1 20:00:00",
+        EndTime: "2021/4/1 00:00:00",
         NowTime: "",
-        // prs: 0,
         timer: null,
         Flag: "投票通道将于本日 20:00(GMT+8) 后开放，敬请期待",
 
@@ -54,7 +55,13 @@
           })
      
 
-    }
+        },
+        open() {
+        this.$message(this.Flag);
+        },
+
+        
+
   },
 })
     window.onload = app.onload;
